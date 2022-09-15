@@ -12,7 +12,7 @@ public class OrderServiceTest {
     OrderService orderService = new OrderServiceImple();
 
     @Test
-    void createOrder() {
+    void createOrder() { //고정 할인을 테스트
         Long memberId = 1l;
         new Member(memberId, "memberA", Grade.VIP);
 

@@ -2,11 +2,14 @@ package hello.core.order;
 
 import hello.core.discount.DiscountPolicy;
 import hello.core.discount.FixDiscountPolicy;
+import hello.core.discount.RateDiscountPoicy;
 import hello.core.member.*;
 
 public class OrderServiceImple implements OrderService{
     private final MemberRepository memberRepository = new MemoryMemberRepository();
-    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
+    //private final DiscountPolicy discountPolicy = new FixDiscountPolicy(); --> 고정 할인
+    private final DiscountPolicy discountPolicy = new RateDiscountPoicy(); //역할과 구현을 충실이 분리했지만 OCP, DIP 원칙 위배
+                                                                           //OrderService는 인터페이스와 구현체 모두 의존
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
         Member member = memberRepository.findById(memberId);
