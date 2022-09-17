@@ -17,7 +17,9 @@ public class MemberApp {
         //ApplicationContext : 스프링 빈을 관리해 준다.
         //AnnotationConfigApplicationContext : 어노테이션 기반 객체를 관리
         // -> AppCpnfig 환경 설정 정보를 가지고 컨테이너에 스프링빈으로 등록된 객체들을 관리해 준다.
+
         MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
+        // "memberservice" : memberservice 로 등록된 빈을 찾는다.
 
         Member member = new Member(1L, "memberA", Grade.VIP); //Long 타입으로 L을 붙혀준다.
         memberService.join(member);

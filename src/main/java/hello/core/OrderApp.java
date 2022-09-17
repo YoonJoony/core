@@ -7,11 +7,19 @@ import hello.core.member.MemberServiceImple;
 import hello.core.order.Order;
 import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImple;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class OrderApp {
     public static void main(String[] args) { //메인 메소드로 고정 할인 출력 잘 되는지 테스트
-        MemberService memberService = new MemberServiceImple();
-        OrderService orderService = new OrderServiceImple();
+// 1       AppConfig appConfig = new AppConfig();
+// 1       MemberService memberService = appConfig.memberService();
+// 1       OrderService orderService = appConfig.orderService();
+        // 스프링 컨테이너 적용 전 코드
+
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
+        OrderService orderService = applicationContext.getBean("orderService", OrderService.class);
 
         Long memberId = 1l;
         Member member = new Member(memberId, "memberA", Grade.VIP);
