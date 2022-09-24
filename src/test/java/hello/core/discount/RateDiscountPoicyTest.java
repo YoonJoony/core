@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RateDiscountPoicyTest { //10퍼 할인 테스트
-    RateDiscountPoicy discountPoicy = new RateDiscountPoicy();
+    RateDiscountPolicy discountPoicy = new RateDiscountPolicy();
 
     @Test
     @DisplayName("VIP는 10% 할인이 적용되엉 한다") //JUnit5 디스플레이 네임 ? 한글로 이름을 쓸 수가 있다

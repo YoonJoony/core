@@ -31,8 +31,8 @@ public class ApplicationContextBasicFindTest {
     @DisplayName("이름 없이 타입으로만 조회")
     void findBeanByType() {
         MemberService memberService = ac.getBean(MemberService.class);//타입으로만 비교할 수 있다.
-        //단 같은 타입의 메소드가 2개 이상 있으면 안된다.
-        //질문? 같은 타입의 메소드가 2개 이상 있으면 어칼건지
+        //단 같은 타입의 빈이 2개 이상 있으면 안된다.
+        //질문? 같은 타입의 빈이ㅂ 2개 이상 있으면 어칼건지
         assertThat(memberService).isInstanceOf(MemberServiceImple.class);
      }
 
@@ -46,7 +46,7 @@ public class ApplicationContextBasicFindTest {
     }
 
     @Test //항상 테스트는 실패 할 경우 테스트도 만들어 줘야 한다
-    @DisplayName("빈 이름으로 조회")
+    @DisplayName("빈 이름으로 조회 실패할 경우")
     void findBeanNameX() {
 //      MemberService memberService = ac.getBean("XXXXX", MemberService.class);
         assertThrows(NoSuchBeanDefinitionException.class,
