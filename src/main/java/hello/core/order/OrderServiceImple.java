@@ -6,10 +6,18 @@ import hello.core.discount.RateDiscountPoicy;
 import hello.core.member.*;
 
 public class OrderServiceImple implements OrderService{
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
-    //private final DiscountPolicy discountPolicy = new FixDiscountPolicy(); --> 고정 할인
-    private final DiscountPolicy discountPolicy = new RateDiscountPoicy(); //역할과 구현을 충실이 분리했지만 OCP, DIP 원칙 위배
-                                                                           //OrderService는 인터페이스와 구현체 모두 의존
+// 2.   private final MemberRepository memberRepository = new MemoryMemberRepository();
+// 2.   //1. private final DiscountPolicy discountPolicy = new FixDiscountPolicy(); --> 고정 할인
+// 2.    private final DiscountPolicy discountPolicy = new RateDiscountPoicy(); //1. 역할과 구현을 충실이 분리했지만 OCP, DIP 원칙 위배
+//                                                                           //1. OrderService는 인터페이스와 구현체 모두 의존
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
+
+    public OrderServiceImple(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
+
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
         Member member = memberRepository.findById(memberId);
