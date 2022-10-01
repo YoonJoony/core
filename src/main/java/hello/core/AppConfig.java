@@ -24,6 +24,8 @@ public class AppConfig { //어플리케이션 전체를 설정하고 전반 운�
         //orderserviceimple은 저장소, 할인 정책 둘 다 들어가니
     }
      **/
+
+
     @Bean
     public MemberService memberService() {
 
